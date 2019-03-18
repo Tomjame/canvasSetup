@@ -62,8 +62,7 @@ function Object(x, y, dx, dy, size, color) {
         }
         if (this.y > innerHeight || this.y < 0) {
             this.dy = -this.dy;
-            this.color = randomColor(colorArray);
-        }
+            }
              
         this.x += this.dx;
         this.y += this.dy;
@@ -93,6 +92,7 @@ function init() {
     
 
 //Animate function 
+//this cycles through the array of objects we have created
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, innerWidth, innerHeight);
