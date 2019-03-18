@@ -62,6 +62,7 @@ function Object(x, y, dx, dy, size, color) {
         }
         if (this.y > innerHeight || this.y < 0) {
             this.dy = -this.dy;
+            this.color = randomColor(colorArray);
         }
              
         this.x += this.dx;
@@ -70,22 +71,33 @@ function Object(x, y, dx, dy, size, color) {
         this.draw();
     }
 }
-
+//array to store our objects
+let objects = [];
 //init function
 function init() {
-    let object = new Object(5, 5, 5, 5, 5, randomColor)
-    object.update();
+    //filling the array with randomised objects
+    for (let i = 0; i < 34; i++){
+        let x = randomNumRange(0, innerWidth);
+        let y = randomNumRange(0, innerHeight);
+        let dx = randomNumRange(-7, 7);
+        let dy = randomNumRange(-7, 7);
+        let size = randomNumRange(5, 30);
+        let color = randomColor(colorArray);
+        objects.push(new Object(x, y, dx, dy, size, color));
+        
+    }    
+   
     }
     
 
+    
 
-}
 //Animate function 
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, innerWidth, innerHeight);
-    for (let i = 0; i < squareArray.length; i++) {
-        squareArray[i].update();
+    for (let i = 0; i < objects.length; i++) {
+        objects[i].update();
     }
 }
 init();
